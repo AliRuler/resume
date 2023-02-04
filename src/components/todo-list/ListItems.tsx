@@ -22,21 +22,17 @@ const EmptyState = ({id}: EmptyStateProps) => (
 const ListItems = ({items, title, remove, update}: ListItemsProps): JSX.Element => {
     const isEmpty = !items.length;
     return (
-        <div style={{width: '50%', border: '2px solid purple', borderRadius: 8, padding: 8}}>
-            <h3>
+        <Grid container style={{border: '2px solid #fff', padding: 8, borderRadius: 2}}>
+            
+            <h1 style={{margin:6 ,textAlign:"center", width:"100%"}}>
                 {title}
-            </h3>
-            <ul style={{display: 'flex', flexDirection: 'column', gap: 10}}>
+            </h1>
                 {items.map((item: any) => (
-                    <ItemBox key={item.id} item={item} update={update} remove={remove}/>
+                    <Grid sx={{margin:1,boxShadow:'0px 0px 5px #fff'}} item xs={2.8}>
+                        <ItemBox key={item.id} item={item} update={update} remove={remove}/>
+                    </Grid>
                 ))}
-            </ul>
-            {isEmpty && (
-                <EmptyState
-                    id={`empty-state`}
-                />
-            )}
-        </div>
+        </Grid>
     )
 }
 

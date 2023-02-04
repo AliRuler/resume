@@ -1,30 +1,30 @@
-import React from "react";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Header from "./layout/Header"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Home from "./pages/Home"; 
 
-import ColorChallenge from "./pages/ColorChallenge";
-import Home from "./pages/Home";
-import TodoList from "./pages/TodoList";
+import {Link} from "react-router-dom";
+import {Button} from "@mui/material";
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
-const router = createBrowserRouter([
-    {
-      element: <Home/>,
-      path: '/'
-    },
-    {
-        element: <ColorChallenge/>,
-        path: '/color-challenge'
-    },
-    {
-        element: <TodoList/>,
-        path: '/todo-list'
-    },
-])
-
-function App() {
-    return (
-        <RouterProvider router={router}/>
-    );
+export default function App() {
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <Header />
+      <Home />
+      {/* <Link to={`/weather/`}>
+                    <Button sx={{bgcolor:'common.white'}}>
+                        {'مشاهده 4 روز آینده'}
+                    </Button>
+                </Link> */}
+    </ThemeProvider>
+  );
 }
 
-export default App;
+ 
