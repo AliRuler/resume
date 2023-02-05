@@ -3,11 +3,12 @@ import WeatherCard from "../components/weather/weatherCard";
 import {useEffect, useState} from "react";
 import {handleGetOneDayWeather} from "../api/api";
 import SelectCity from "../components/weather/SelectCity";
-import Header from "../components/weather/Header";
+import Title from "../components/weather/Title";
 
 export default function Weather(){
+ 
+    const [cityWeather, setCityWeather] = useState({});
     const [city, setCity] = useState('tehran');
-    const [cityWeather, setCityWeather] = useState({})
 
     const handleGetData = async () => {
         const data = await handleGetOneDayWeather(city)
@@ -18,10 +19,10 @@ export default function Weather(){
         handleGetData()
     }, [city])
 
+    
     return(
         <Grid container>
-            <Header/>
-            <SelectCity currency={city} setCurrency={setCity}/>
+            <Title value={'WEATHER'}/>
             <WeatherCard cityWeather={cityWeather} city={city}/>
         </Grid>
     )

@@ -17,7 +17,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import PhoneIcon from '@mui/icons-material/Phone';
+import EditIcon from '@mui/icons-material/Edit';
+import CloudIcon from '@mui/icons-material/Cloud';
 
 import {Link} from "react-router-dom";
 import {Button} from "@mui/material";
@@ -96,7 +98,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            RESUMES
           </Typography>
         </Toolbar>
       </AppBar>
@@ -125,40 +127,43 @@ export default function Header() {
         <Divider />
         <List>
           <ListItem disablePadding>
+            <a style={{color:'#fff'}} href={"/"}>
             <ListItemButton>
               <ListItemIcon>
-            {/* <Link to={"/"}> */}
-                <InboxIcon />
-            {/* </Link> */}
+              <EditIcon />
               </ListItemIcon>
+              Add new Todo
               <ListItemText />
             </ListItemButton>
+            </a>
           </ListItem>
           <ListItem disablePadding>
-          {/* <Link to={`/weather`}> */}
+          <a style={{color:'#fff'}} href={"/todo-list"}>
             <ListItemButton>
               <ListItemIcon>
-                <InboxIcon />
+                <PhoneIcon />
               </ListItemIcon>
+                Todo list
               <ListItemText />
             </ListItemButton>
-            {/* </Link> */}
+            </a>
           </ListItem>
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <MailIcon />
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem disablePadding>
+            <a style={{color:'#fff'}} href={"/weather"}>
+            <ListItemButton>
+              <ListItemIcon>
+                <CloudIcon />
+              </ListItemIcon>
+                Weather
+              <ListItemText />
+            </ListItemButton>
+            </a>
+          </ListItem>
         </List>
-      </Drawer>
+        </Drawer>
       <Main open={open}>
         <DrawerHeader />
       </Main>

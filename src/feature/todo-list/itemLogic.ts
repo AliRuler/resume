@@ -10,29 +10,12 @@ export const createItem = (name: string): Item => {
 };
 
 let items = [
-    'Sweatshirt',
-    'Running shoes',
-    'AirPods',
-    'MacBook',
-    'iPad',
-    'USB-C cable',
-    'Lightning cable',
-    'Wallet',
-    'MagSafe cable',
-    'Apple Watch charger',
-    'Power brick',
-    'Toothbrush',
-    'Toothpaste',
-    'Deorderant',
-    'Backpack',
-    'Vitamins',
-    'Kindle',
-    'Micro-USB cable',
-    'Sleep mask',
-    'Ear plugs',
-    'Face masks',
-    'Sony Walkman',
-    'Emergency Vegan Bacon',
+    'homework',
+    'job',
+    'TV',
+    'exersize',
+    'housework',
+    'study',
 ].map(createItem);
 
 const [first, second] = items;

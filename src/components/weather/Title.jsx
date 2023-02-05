@@ -1,13 +1,12 @@
 import {Grid, Typography} from "@mui/material";
 
-const Header = () => {
+export default function Title(props){
     return(
-        <Grid item xs={12} textAlign={'center'}>
+        <Grid sx={{margin:5}} item xs={12} textAlign={'center'}>
             <Typography variant={'h1'}>
-                Weather App
+                {props.value}
             </Typography>
         </Grid>
     )
 }
 
-export default Header

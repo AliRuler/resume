@@ -18,11 +18,6 @@ export default function App() {
       <CssBaseline />
       <Header />
       <Home />
-      {/* <Link to={`/weather/`}>
-                    <Button sx={{bgcolor:'common.white'}}>
-                        {'مشاهده 4 روز آینده'}
-                    </Button>
-                </Link> */}
     </ThemeProvider>
   );
 }

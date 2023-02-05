@@ -6,8 +6,7 @@ import { Item } from "../model/todo-list";
 
 import Container from '@mui/material/Container';
 
-import {Link} from "react-router-dom";
-import {Button} from "@mui/material";
+import Title from "../components/weather/Title"
 
 
 const TodoList = (): JSX.Element => {
@@ -32,13 +31,10 @@ const TodoList = (): JSX.Element => {
 
     return (
         <>
-            <Link to={`/weather/`}>
-                <Button sx={{bgcolor:'common.white'}}>
-                    {'مشاهده 4 روز آینده'}
-                </Button>
-            </Link>
-            <ListItems title={'packed Items'} items={packedItems} update={update} remove={remove}/>
-            <ListItems title={'unpacked Items'} items={unpackedItems} update={update} remove={remove}/>
+            <Title value={"Todo"}/>
+            <ListItems title={''} items={packedItems} update={update} remove={remove}/>
+            <Title value={"Not todo"}/>
+            <ListItems title={''} items={unpackedItems} update={update} remove={remove}/>
         </>
     )
 }

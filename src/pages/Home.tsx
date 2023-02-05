@@ -1,68 +1,96 @@
 import { Outlet, Link } from "react-router-dom";
-import {createItem, filterItems, getInitialItems, removeItem, updateItem} from "../feature/todo-list/itemLogic";
+import {
+  createItem,
+  filterItems,
+  getInitialItems,
+  removeItem,
+  updateItem,
+} from "../feature/todo-list/itemLogic";
 import { Item } from "../model/todo-list";
-import {useState} from "react";
-import Container from '@mui/material/Container';
+import { useState } from "react";
+import Container from "@mui/material/Container";
 
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import ColorChallenge from "../pages/ColorChallenge";
 import AddNewTodo from "../components/todo-list/AddNewTodo";
 import TodoList from "./TodoList";
 import Weather from "./weather";
 import Header from "../layout/Header";
 
+import SinglePage from "./singlePage";
 
-export default function Home(): JSX.Element  {
-    const [items, setItems] = useState<Item[]>(getInitialItems());
-    const [newItemName, setNewItemName] = useState('');
+import NewContact from "./Contacts/ShowContact";
+import ShowContact from "./Contacts/ShowContact";
+import Register from "./Contacts/Register/Register";
+import Home2 from "./Home/Home";
+import {Layout} from "../components/Layout";
 
-    const add = (name: string) => {
-        const item = createItem(name);
-        setItems([...items, item]);
-    };
+export default function Home(): JSX.Element {
+  const [items, setItems] = useState<Item[]>(getInitialItems());
+  const [newItemName, setNewItemName] = useState("");
 
-    const update = (id: string, updates: any) => {
-        setItems(updateItem(items, id, updates));
-    };
+  const add = (name: string) => {
+    const item = createItem(name);
+    setItems([...items, item]);
+  };
 
-    const remove = (id: string) => {
-        setItems(removeItem(items, id));
-    };
+  const update = (id: string, updates: any) => {
+    setItems(updateItem(items, id, updates));
+  };
 
-    const unpackedItems = filterItems(items, {packed: false});
-    const packedItems = filterItems(items, {packed: true});
+  const remove = (id: string) => {
+    setItems(removeItem(items, id));
+  };
 
-    const router = createBrowserRouter([
-        {
-        element: <AddNewTodo newItemName={newItemName} setNewItemName={setNewItemName} addItem={add}/>,
-        path: '/'
-        },
-        {
-        element: <TodoList/>,
-        path: '/todo-list'
-        },  
-        {
-        element: <Weather/>,
-        path: '/weather'
-        } ,   
-        ])
+  const unpackedItems = filterItems(items, { packed: false });
+  const packedItems = filterItems(items, { packed: true });
 
-    return (
-        <Container maxWidth='lg'>  
-            <RouterProvider router={router}/>
-            {/* <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
-            <div style={{display: 'flex', flexDirection: 'column', width: "80%", padding: 16}}> 
-                <Link to={`https://reactrouter.com/en/main/components/link`}>
-                    <div style={{border: '2px solid purple', borderRadius: 12, padding: 8, cursor: 'pointer'}}>
-                        <h2>
-                            📒  Todo List
-                        </h2>
-                    </div>
-                </Link>
-                <Outlet />
-            </div>
-        </div> */}
-        </Container>
-    )
+  const router = createBrowserRouter([
+    {
+      element: (
+        <AddNewTodo
+          newItemName={newItemName}
+          setNewItemName={setNewItemName}
+          addItem={add}
+        />
+      ),
+      path: "/",
+    },
+    // {
+    //   path: "/",
+    //   element: <Layout />,
+    //   children: [
+    //     {
+    //       index: true,
+    //       element: <Home />,
+    //     },
+    //     {
+    //       path: "Register",
+    //       element: <Register />,
+    //     },
+    //     {
+    //       path: "/:Namecontact",
+    //       element: <ShowContact />,
+    //     },
+    //   ],
+    // },
+    {
+      element: <TodoList />,
+      path: "/todo-list",
+    },
+    {
+      element: <Weather />,
+      path: "/weather",
+    },
+    {
+      path: "weather/:city",
+      element: <SinglePage />,
+    },
+  ]);
+
+  return (
+    <Container maxWidth="lg">
+      <RouterProvider router={router} />
+    </Container>
+  );
 }
-
